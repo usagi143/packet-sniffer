@@ -1,2 +1,2 @@
 # packet-sniffer
-Simple packet sniffer programmed with c
+Simple packet sniffer programmed with c and python
