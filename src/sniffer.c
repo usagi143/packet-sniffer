@@ -20,10 +20,9 @@ void print_hex(unsigned char *buffer, int length) {
     printf("\n");
 }
 
-int main(){
+int capture_packet(unsigned char *buffer){
     
     int capturer_socket, packet_socket;
-    char buffer[BUFFER_SIZE];
 
     if((capturer_socket = socket(AF_PACKET,SOCK_RAW , htons(ETH_P_ALL))) == -1 ){
         perror("Error while creating a socket"); 
@@ -37,7 +36,9 @@ int main(){
             close(packet_socket);
             return 1;
         }
-        print_hex(buffer, packet_recieved);
+
+        close(capturer_socket);
+        return packet_recieved;
     }
 
     return 0;
